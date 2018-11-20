@@ -1,0 +1,29 @@
+<document>
+  <properties>
+    <title>WebCA Changes page</title>
+    <author email="matej.sekoranja_AT_cosylab.com">Matej Sekoranja</author>
+  </properties>
+  
+  <body>
+
+    <release version="1.2.0" date="2008-09-18" description="Write access monitoring.">
+      <action dev="msekoranja" type="update">
+        Write access monitoring added.
+        FireFox 3 support.
+      </action>              
+    </release>
+
+    <release version="1.1.0" date="2007-10-21" description="Additional featured added.">
+      <action dev="msekoranja" type="update">
+        Monitor destruction IF added, CTRL support.
+      </action>              
+    </release>
+
+    <release version="1.0.0" date="2007-03-29" description="First release of WebCA.">
+      <action dev="msekoranja" type="update">
+		First release of WebCA. It contains a NP API browser plugin implementation (called npca).
+      </action>              
+    </release>
+
+  </body>
+</document>

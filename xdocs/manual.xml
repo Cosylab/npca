@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+  <document>
+  
+    <properties>
+      <title>Users manual</title>
+    </properties>
+
+    <body>
+      <section name="Users manual">
+      <p>
+      WebCA provides a NP API browser plugin. Currenty supported browsers are Firefox/Mozilla (Linux, Win32, Mac OS X) and Safari (Mac OS X).<br/>
+      Detailed installation instructions are described in a <code>INSTALL</code> file and API decoumentation in <code>npca/docs</code> directory.<br/>
+      </p>
+      </section>
+      
+      <section name="Simple example">
+	  	<source><![CDATA[
+<html>
+ <head>
+   <title>Hello, PV!</title>
+ </head>
+
+ <body>
+   <embed id="EPICSPlugin" type="application/mozilla-npca-scriptable-plugin" width="0" height="0"/>
+
+   <div id="valueElement">(unknown)</div>
+	
+   <script>
+   
+     // get scriptable object
+     var epicsPlugin = document.getElementById("EPICSPlugin");
+
+     // handle events
+     function handleEvents() {
+       epicsPlugin.pendEvents();
+   
+       // 10Hz
+       setTimeout(function() { handleEvents(); }, 100);
+     }
+     
+     // start handling events
+     handleEvents();
+
+     // monitor callback
+     function handleMonitor( userInfo, pvName, values, status, severity, timestamp ) {
+        userInfo.innerHTML = values;	
+     }
+
+     // monitor PV
+     epicsPlugin.monitorPV("ai001", "handleMonitor", document.getElementById("valueElement"));
+     
+   </script>
+
+ </body>
+</html>]]></source>
+	  </section>
+
+    </body>
+   
+  </document>
+  

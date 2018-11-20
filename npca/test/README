@@ -1,0 +1,18 @@
+HOW TO RUN A TEST
+-----------------
+1. Compile 'npcaTest' softIOC application (set of EPICS_BASE in configure/RELEASE before building):
+
+cd <...>/npca-plugin/npca/test (where this README is located)
+cd npcaTest
+make
+
+2. Run 'npcaTest' softIOC:
+
+cd iocBoot/iocnpca
+./st.cmd
+
+NOTE: you might need to fix first line of the 'st.cmd' and 'ARCH' in the 'Makefile' in the same directory to reflect your environment.
+
+3. 'Open test.html' in your browser.
+
+'test.html' is located in <...>/npca-plugin/npca/test (where this README is located).

@@ -1,0 +1,456 @@
+<HTML>
+ <HEAD>
+   <TITLE>EPICS Channel Access Plug-in Test</TITLE>
+
+   <STYLE>
+	  table.data { border-collapse: collapse; }
+	  th, td { width: 350px; margin: 5px; border-style: solid; border-width: 1.0px; border-color: black; padding: 8.0px; text-align: left }
+	  th { background-color: #BBBB; text-align: center }
+	  td.result { text-align: center }
+	</STYLE>
+  </HEAD>
+
+ <BODY id="bodyId">
+
+  <center>
+    <h1>EPICS Channel Access Plug-in Test</h1>
+  </center>
+
+  <center>
+    <p>
+      This page contains a test case which test the implementation of EPICS Channel Access Plug-in Test
+    </p>
+
+    <embed id="EPICSPlugin" type="application/mozilla-npca-scriptable-plugin" width="0" height="0"/><br/>
+
+    <br/>
+	<table class="data">
+		<tr> <th>Test</th> <th>Result</th> </tr>
+		
+		<tr> <td>Get <code>EPICSPlugin</code> scriptable instance</td>    <td id="instanceTest" class="result">(unknown)</td> </tr>
+
+		<tr> <td><code>EPICSPlugin.version</code></td>    				  <td id="versionTest" class="result">(unknown)</td> </tr>
+		<tr> <td><code>EPICSPlugin.epicsVersion</code></td>    			  <td id="epicsVersionTest" class="result">(unknown)</td> </tr>
+
+		<tr> <td>Connection monitoring</td>                               <td id="connMonTest1" class="result">(unknown)</td> </tr>
+		<tr> <td>Connection monitoring ID</td> 							  <td id="connMonTest6" class="result">(unknown)</td> </tr>
+		<tr> <td>Connection monitoring (second)</td>                      <td id="connMonTest2" class="result">(unknown)</td> </tr>
+		<tr> <td>Connection monitoring (on connected)</td>                <td id="connMonTest3" class="result">(unknown)</td> </tr>
+		<tr> <td>Connection monitoring (non-existant record)</td>         <td id="connMonTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>Connection monitoring (second, non-existant record)</td> <td id="connMonTest5" class="result">(unknown)</td> </tr>
+
+		<tr> <td>Get request (no blocking test)</td> 					  <td id="getTest1" class="result">(unknown)</td> </tr>
+		<tr> <td> - value</td>					 					      <td id="getTest11" class="result">(unknown)</td> </tr>
+		<tr> <td> - status</td> 					  					  <td id="getTest12" class="result">(unknown)</td> </tr>
+		<tr> <td> - severity</td> 					  					  <td id="getTest13" class="result">(unknown)</td> </tr>
+		<tr> <td> - timestamp</td> 					  				      <td id="getTest14" class="result">(unknown)</td> </tr>
+		<tr> <td>Get string (enum) scalar</td> 				  			  <td id="getTest2" class="result">(unknown)</td> </tr>
+		<tr> <td>Get double array</td> 						  		      <td id="getTest3" class="result">(unknown)</td> </tr>
+		<tr> <td>Get long array</td> 						  			  <td id="getTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>Get string array</td> 						  			  <td id="getTest5" class="result">(unknown)</td> </tr>
+
+		<tr> <td>Get CTRL request (no blocking test)</td> 				  <td id="getCTRLTest1" class="result">(unknown)</td> </tr>
+		<tr> <td> - value</td>					 					      <td id="getCTRLTest11" class="result">(unknown)</td> </tr>
+		<tr> <td> - status</td> 					  					  <td id="getCTRLTest12" class="result">(unknown)</td> </tr>
+		<tr> <td> - severity</td> 					  					  <td id="getCTRLTest13" class="result">(unknown)</td> </tr>
+		<tr> <td> - limits</td> 					  				      <td id="getCTRLTest14" class="result">(unknown)</td> </tr>
+		<tr> <td>Get CTRL labels</td> 				  			  		  <td id="getCTRLTest2" class="result">(unknown)</td> </tr>
+		<tr> <td>Get CTRL double array</td> 				  		      <td id="getCTRLTest3" class="result">(unknown)</td> </tr>
+		<tr> <td>Get CTRL long array</td> 					  			  <td id="getCTRLTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>Get CTRL string array</td> 				  			  <td id="getCTRLTest5" class="result">(unknown)</td> </tr>
+
+		<tr> <td>Put request (no blocking test)</td> 					  <td id="putTest1" class="result">(unknown)</td> </tr>
+		<tr> <td>Put double scalar</td> 						  		  <td id="putTest11" class="result">(unknown)</td> </tr>
+		<tr> <td>Put long scalar</td> 				  			  		  <td id="putTest2" class="result">(unknown)</td> </tr>
+		<tr> <td>Put string (enum) scalar</td> 				  			  <td id="putTest3" class="result">(unknown)</td> </tr>
+		<tr> <td>Put double array</td> 						  		      <td id="putTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>Put long array</td> 						  			  <td id="putTest5" class="result">(unknown)</td> </tr>
+		<tr> <td>Put string array</td> 						  			  <td id="putTest6" class="result">(unknown)</td> </tr>
+		<tr> <td>Put without callback</td>	 							  <td id="putTest7" class="result">(unknown)</td> </tr>
+		<tr> <td>Put with wrong data</td>	 							  <td id="putTest8" class="result">(unknown)</td> </tr>
+
+		<tr> <td>Monitor request (no blocking test)</td> 				  <td id="monitorTest1" class="result">(unknown)</td> </tr>
+		<tr> <td> - value</td>					 					      <td id="monitorTest11" class="result">(unknown)</td> </tr>
+		<tr> <td> - status</td> 					  					  <td id="monitorTest12" class="result">(unknown)</td> </tr>
+		<tr> <td> - severity</td> 					  					  <td id="monitorTest13" class="result">(unknown)</td> </tr>
+		<tr> <td> - timestamp</td> 					  				      <td id="monitorTest14" class="result">(unknown)</td> </tr>
+		<tr> <td>Monitor array</td> 				  					  <td id="monitorTest2" class="result">(unknown)</td> </tr>
+		<tr> <td>Monitor ID</td>	 			  						  <td id="monitorTest5" class="result">(unknown)</td> </tr>
+		<tr> <td>Monitor destruction (via callback)</td> 				  <td id="monitorTest3" class="result">(unknown)</td> </tr>
+		<tr> <td>Monitor destruction (via destroyMonitor)</td> 			  <td id="monitorTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>Monitor destruction (immediate via destroyMonitor)</td>  <td id="monitorTest6" class="result">(unknown)</td> </tr>
+
+		<tr> <td>ACL request (no blocking test)</td> 				  	  <td id="aclTest1" class="result">(unknown)</td> </tr>
+		<tr> <td> - value</td>					 					      <td id="aclTest11" class="result">(unknown)</td> </tr>
+		<tr> <td>ACL ID</td>	 			  						  	  <td id="aclTest5" class="result">(unknown)</td> </tr>
+		<tr> <td>ACL destruction (via destroyMonitor)</td> 			  	  <td id="aclTest4" class="result">(unknown)</td> </tr>
+		<tr> <td>ACL destruction (immediate via destroyMonitor)</td>  	  <td id="aclTest6" class="result">(unknown)</td> </tr>
+	</table>
+
+   <script>
+     function reportTestStatus( element, passed )
+     {
+     	if (passed)
+     	{
+     		element.innerHTML = "<font color='green'><b>PASSED</b></font>";
+     	}	
+     	else
+     	{
+     		element.innerHTML = "<font color='red'><b>FAILED</b></font>";
+     	}
+     }
+   
+   
+   
+	 // get scriptable object
+     var epicsPlugin = document.getElementById("EPICSPlugin");
+     reportTestStatus(instanceTest, (epicsPlugin != null));
+
+	 // version
+     var version = epicsPlugin.version;
+     reportTestStatus(versionTest, (version != null));
+	 
+	 // epicsVersion
+     var epicsVersion = epicsPlugin.epicsVersion;
+     reportTestStatus(epicsVersionTest, (epicsVersion != null));
+
+     //
+     // handle events
+     //
+     function handleEvents() {
+       // returns number of handled events (int), optional argument: maximum number of events to handle (int), defaults to 16
+ 	   epicsPlugin.pendEvents();
+ 	   
+	   // 10Hz
+	   setTimeout(function() { handleEvents(); }, 100);
+     }
+
+	 // start handling events
+	 handleEvents();
+
+
+
+     // variant userInfo, string pvName, boolean connectionStatus
+     function handleConnection( userInfo, pvName, connectionStatus ) {
+ 	   reportTestStatus(userInfo, connectionStatus && pvName == "dummy001");
+ 	   
+ 	   // start connection monitoring on already connected channel test
+ 	   if (connectionStatus && userInfo == connMonTest2)
+	   	 epicsPlugin.monitorConnectionStatus("dummy001", "handleConnection", document.getElementById("connMonTest3"));
+     }
+
+     // string pvName, string callbackName, variant userInfo
+	 var connectionMonitorId = epicsPlugin.monitorConnectionStatus("dummy001", "handleConnection", document.getElementById("connMonTest1"));
+	 reportTestStatus(connMonTest6, connectionMonitorId > 0);
+	 epicsPlugin.monitorConnectionStatus("dummy001", "handleConnection", document.getElementById("connMonTest2"));
+
+     var t1 = new Date();
+	 epicsPlugin.monitorConnectionStatus("invalid", "handleConnection", document.getElementById("connMonTest4"));
+	 var t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(connMonTest4, (t2 < 100));
+	 
+	 reportTestStatus(connMonTest5, true);
+	 epicsPlugin.monitorConnectionStatus("invalid", "handleConnection", document.getElementById("connMonTest5"));
+     
+
+     // variant userInfo, string pvName, scalar/array values, int status, int severity, double timestamp (milliseconds past 1970)
+     function handleScalarGet1( userInfo, pvName, values, status, severity, timestamp ) {
+ 	   reportTestStatus(getTest11, values == 1.23);
+ 	   reportTestStatus(getTest12, status == 17);
+ 	   reportTestStatus(getTest13, severity == 3);
+ 	   reportTestStatus(getTest14, timestamp == 631152000000);
+     }
+
+     t1 = new Date();
+	 // string pvName, string callbackName, variant userInfo
+	 epicsPlugin.getPV("ai001", "handleScalarGet1", null);
+	 t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(getTest1, (t2 < 100));
+
+
+     function handleScalarGet2( userInfo, pvName, values, status, severity, timestamp ) {
+ 	   reportTestStatus(getTest2, values == "sevenString");
+     }
+	 epicsPlugin.getPV("enum", "handleScalarGet2", null);
+
+
+     function handleArrayGet( userInfo, pvName, values, status, severity, timestamp ) {
+ 	   reportTestStatus(userInfo, values.length == 3 && (values[1]*1 - 1) == values[0]*1 && (values[2]*1 - 1) == values[1]*1);
+     }
+	 epicsPlugin.getPV("doubleArray", "handleArrayGet", document.getElementById("getTest3"));
+	 epicsPlugin.getPV("longArray", "handleArrayGet", document.getElementById("getTest4"));
+	 epicsPlugin.getPV("stringArray", "handleArrayGet", document.getElementById("getTest5"));
+
+
+
+
+
+     // variant userInfo, string pvName, scalar/array values, int status, int severity, double timestamp (milliseconds past 1970)
+     function handleScalarGetCTRL1( userInfo, pvName, values, status, severity, ctrlObj ) {
+ 	   reportTestStatus(getCTRLTest11, values == 1.23);
+ 	   reportTestStatus(getCTRLTest12, status == 17);
+ 	   reportTestStatus(getCTRLTest13, severity == 3);
+ 	   reportTestStatus(getCTRLTest14,
+	   ctrlObj.units == "units" &&
+	   ctrlObj.precision == 2 &&
+ 	   ctrlObj.lowerDisplayLimit == -100 &&
+ 	   ctrlObj.upperDisplayLimit == 100 &&
+ 	   ctrlObj.lowerAlarmLimit == -5 &&
+ 	   ctrlObj.lowerWarningLimit == -3 &&
+ 	   ctrlObj.upperWarningLimit == 3 &&
+ 	   ctrlObj.upperAlarmLimit == 5 &&
+ 	   ctrlObj.lowerControlLimit == -100 &&
+ 	   ctrlObj.upperControlLimit == 100
+ 	   );
+     }
+
+     t1 = new Date();
+	 // string pvName, string callbackName, variant userInfo
+	 epicsPlugin.getCTRL("ai001", "handleScalarGetCTRL1", null);
+	 t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(getCTRLTest1, (t2 < 100));
+
+
+     function handleScalarGetCTRL2( userInfo, pvName, values, status, severity, ctrlObj ) {
+ 	   reportTestStatus(getCTRLTest2, values == "sevenString" &&
+ 	   ctrlObj.labels.length == 16 &&
+	   ctrlObj.labels[0] == "zeroString" &&
+       ctrlObj.labels[1] == "oneString" &&
+       ctrlObj.labels[2] == "twoString" &&
+       ctrlObj.labels[3] == "threeString" &&
+       ctrlObj.labels[4] == "fourString" &&
+       ctrlObj.labels[5] == "fiveString" &&
+       ctrlObj.labels[6] == "sixString" &&
+       ctrlObj.labels[7] == "sevenString" &&
+       ctrlObj.labels[8] == "8s" &&
+       ctrlObj.labels[9] == "9s" &&
+       ctrlObj.labels[10] == "10s" &&
+       ctrlObj.labels[11] == "11s" &&
+       ctrlObj.labels[12] == "12s" &&
+       ctrlObj.labels[13] == "13s" &&
+       ctrlObj.labels[14] == "14s" &&
+       ctrlObj.labels[15] == "15s");
+     }
+	 epicsPlugin.getCTRL("enum", "handleScalarGetCTRL2", null);
+
+
+     function handleArrayGetCTRL( userInfo, pvName, values, status, severity, ctrlObj ) {
+ 	   reportTestStatus(userInfo, values.length == 3 && (values[1]*1 - 1) == values[0]*1 && (values[2]*1 - 1) == values[1]*1);
+     }
+	 epicsPlugin.getCTRL("doubleArray", "handleArrayGetCTRL", document.getElementById("getCTRLTest3"));
+	 epicsPlugin.getCTRL("longArray", "handleArrayGetCTRL", document.getElementById("getCTRLTest4"));
+	 epicsPlugin.getCTRL("stringArray", "handleArrayGetCTRL", document.getElementById("getCTRLTest5"));
+
+
+
+
+
+
+	 // variant userInfo, string pvName, scalar/array values, int completionStatus
+     function handlePut( userInfo, pvName, values, completionStatus ) {
+  	   reportTestStatus(userInfo, completionStatus == 1);
+     }
+
+     t1 = new Date();
+	 // string pvName, string callbackName, variant userInfo, scalar/array values
+	 epicsPlugin.putPV("dummy002", "handlePut",  document.getElementById("putTest11"), 1.11);
+	 t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(putTest1, (t2 < 100));
+
+	 epicsPlugin.putPV("dummy002", "handlePut",  document.getElementById("putTest2"), 2);
+	 epicsPlugin.putPV("dummy002", "handlePut",  document.getElementById("putTest3"), "3.33");
+
+	 epicsPlugin.putPV("dummyArray", "handlePut",  document.getElementById("putTest4"), [ 4.44, 5.55, 6.66 ]);
+	 epicsPlugin.putPV("dummyArray", "handlePut",  document.getElementById("putTest5"), [ 7, 8, 9]);
+	 epicsPlugin.putPV("dummyArray", "handlePut",  document.getElementById("putTest6"), [ "10.10", "11.11", "12.12" ]);
+
+	 // test no-callback, code must pass
+	 epicsPlugin.putPV("dummy002", null, null, 123);
+	 reportTestStatus(putTest7, true);
+
+     function handlePutWithError( userInfo, pvName, values, completionStatus ) {
+  	   reportTestStatus(userInfo, completionStatus == 176);
+     }
+
+	 // array data to scalar... error completion expected     
+	 epicsPlugin.putPV("dummy002", "handlePutWithError",  document.getElementById("putTest8"), [ 4.44, 5.55, 6.66 ]);
+
+
+
+
+
+     var r1 = true, r2 = true, r3 = true, r4 = true;
+     var count = 0;
+	 var lastValue;
+	 var lastTimestamp;
+     // variant userInfo, string pvName, scalar/array values, int status, int severity, double timestamp (milliseconds past 1970)
+     // to destroy monitor return false
+     function handleMonitor( userInfo, pvName, values, status, severity, timestamp ) {
+ 	   if (count > 0) {
+ 	   	 r1 = r1 && ((values - lastValue) <= 2 && (values - lastValue) > 0);
+  	     reportTestStatus(monitorTest11, r1);
+ 	     r2 = r2 && (status == 0);
+ 	     reportTestStatus(monitorTest12, r2);
+ 	     r3 = r3 && (severity == 0);
+ 	     reportTestStatus(monitorTest13, r3);
+ 	     r4 = r4 && ((timestamp - lastTimestamp) <= 1000 && (timestamp - lastTimestamp) >= 0);
+ 	     reportTestStatus(monitorTest14, r4);
+	   }
+ 	   
+ 	   count++;
+ 	   lastValue = values;
+ 	   lastTimestamp = timestamp;
+ 	   if (count == 4)
+ 	   {
+ 	  	 reportTestStatus(monitorTest3, true);
+	     return false;
+ 	   }
+ 	   else if (count > 4)
+	  	 reportTestStatus(monitorTest3, false);
+     }
+
+     // variant userInfo, string pvName, scalar/array values, int status, int severity, double timestamp (milliseconds past 1970)
+     // to destroy monitor return false
+     function handleNoMonitor( userInfo, pvName, values, status, severity, timestamp ) {
+ 	 	reportTestStatus(monitorTest6, false);
+     }
+ 	 reportTestStatus(monitorTest6, true);
+
+     t1 = new Date();
+	 // string pvName, string callbackName, variant userInfo
+	 var counterMonitorId = epicsPlugin.monitorPV("counter", "handleNoMonitor", null);
+	 epicsPlugin.destroyMonitor(counterMonitorId);		// counter not yet connected -> async create monitor -> destructuon before monitor created test
+	 reportTestStatus(monitorTest5, counterMonitorId > 0);
+	 epicsPlugin.monitorPV("counter", "handleMonitor", null);
+	 t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(monitorTest1, (t2 < 100));
+
+	 // simple array monitor test
+     function handleArrayMonitor( userInfo, pvName, values, status, severity, timestamp ) {
+ 	     reportTestStatus(monitorTest2, values.length > 0);
+ 	     return false;
+     }
+	 epicsPlugin.monitorPV("doubleArray", "handleArrayMonitor", null);
+     
+     
+     
+     
+     var monitorId = 0;
+     var monitorCounter = 0;
+     // variant userInfo, string pvName, scalar/array values, int status, int severity, double timestamp (milliseconds past 1970)
+     // to destroy monitor return false
+     function handleMonitorCounter( userInfo, pvName, values, status, severity, timestamp ) {
+     	monitorCounter++;
+     	if (monitorCounter == 4)
+     	{
+ 	  	 	reportTestStatus(monitorTest4, true);
+	     	epicsPlugin.destroyMonitor(monitorId);
+     	}
+     	else if (monitorCounter > 4)
+     	{
+	  		reportTestStatus(monitorTest4, false);
+     	}
+     }
+
+	 // string pvName, string callbackName, variant userInfo
+	 monitorId = epicsPlugin.monitorPV("counter", "handleMonitorCounter", null);
+
+	 // invalid IDs test (it is just a browser crash test)
+	 epicsPlugin.destroyMonitor(0);
+	 epicsPlugin.destroyMonitor(12345);
+
+
+
+
+
+     // variant userInfo, string pvName, boolean writableStatus
+     // to destroy monitor return false
+     function handleACLDummy( userInfo, pvName, values, writableStatus ) {
+     	return false;
+     }
+
+     // variant userInfo, string pvName, boolean writableStatus
+     // to destroy monitor return false
+     function handleNoACL( userInfo, pvName, writableStatus ) {
+ 	 	reportTestStatus(aclTest6, false);
+     }
+ 	 reportTestStatus(aclTest6, true);
+
+     t1 = new Date();
+	 // string pvName, string callbackName, variant userInfo
+	 var aclMonitorId = epicsPlugin.monitorWritableStatus("recordACL", "handleNoACL", null);
+	 epicsPlugin.destroyMonitor(aclMonitorId);		// recordACL not yet connected -> async create monitor -> destruction before monitor created test
+	 reportTestStatus(aclTest5, aclMonitorId > 0);
+	 //epicsPlugin.monitorWritableStatus("recordACL", "handleACLDummy", null);
+	 t2 = new Date() - t1;
+  	 // should not block
+  	 reportTestStatus(aclTest1, (t2 < 100));
+
+     var aclId = 0;
+     var aclCounter = 0;
+     // variant userInfo, string pvName, boolean writableStatus
+     // to destroy monitor return false
+     function handleACL( userInfo, pvName, writeStatus ) {
+     	if (pvName != "underACL") {
+			reportTestStatus(aclTest11, false);
+	  		return false;
+    	}
+     	aclCounter++;
+     	if (aclCounter == 1)
+     	{
+	  	 	if (writeStatus) {
+				// turn off writable
+      			epicsPlugin.putPV("recordACL", null, null, 0);
+	  	 	}
+      		else {
+	 	  	 	reportTestStatus(aclTest11, false);
+	 	  	 	return false;
+      		}
+     	}
+     	else if (aclCounter == 2)
+     	{
+ 	  	 	if (!writeStatus) {
+				// turn writable back on
+     			epicsPlugin.putPV("recordACL", null, null, 1);
+ 	  	 	}
+ 	  	 	else {
+	 	  	 	reportTestStatus(aclTest11, false);
+	 	  	 	return false;
+ 	  	 	}
+     	}
+     	else if (aclCounter == 3)
+     	{
+			aclTest11.innerHTML = "c";
+ 	  	 	reportTestStatus(aclTest11, writeStatus);
+
+			reportTestStatus(aclTest4, true);
+			// destroy and trigger
+			epicsPlugin.destroyMonitor(aclId);
+		    epicsPlugin.putPV("recordACL", null, null, 0);
+     	}
+     	else if (aclCounter > 3)
+     	{
+	  		reportTestStatus(aclTest4, false);
+     	}
+     }
+     
+     // turn on writable (take care of initial state)
+     epicsPlugin.putPV("recordACL", null, null, 1);
+
+	setTimeout(function() { 
+			 // string pvName, string callbackName, variant userInfo
+	 aclId = epicsPlugin.monitorWritableStatus("underACL", "handleACL", null);
+	 }, 100);
+
+   </script>
+
+
+  </center>
+
+ </BODY>
+</HTML>

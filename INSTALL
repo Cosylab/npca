@@ -1,0 +1,68 @@
+SUPPORTED BROWSERS
+------------------
+All browsers supporting NPAPI plugin API should work.
+'npca' supported browsers are newer Gecko-engine browsers (Mozilla, Firefox), Safari (WebKit based).
+
+HOW TO BUILD
+------------
+
+1. Edit 'configure/RELEASE' file and set 'EPICS_BASE' variable to reflect your environment.
+2. Build plug-in by executing 'make'.
+
+Build plug-in is a dynamic/shared library and does not have EPICS statically linked.
+Make sure that EPICS 'ca' and 'Com' are available. Since it uses native EPICS 'ca' library implementation,
+'caRepeater' has to be in path (or already loaded).
+
+STATIC BUILD
+------------
+
+Linux
+-----
+Put (uncomment) line
+
+STATIC_BUILD = YES
+
+in npca-plugin/npca/src/Makefile.
+
+Win32
+-----
+You have to compile whole EPICS base as static.
+Change your EPICS_BASE/configure/CONFIG_SITE near line 120 to
+
+SHARED_LIBRARIES=NO
+STATIC_BUILD=YES
+
+Whole base would be static (including caRepeater.exe).
+
+Now to build NPCA (which has to be an DLL) turn those switches to
+
+SHARED_LIBRARIES=YES
+STATIC_BUILD=YES
+
+or put those lines in the npca-plugin/npca/src/Makefile.
+
+Resulted npca.dll size should ~508kB.
+
+
+
+HOW TO INSTALL
+--------------
+
+Mac OS X (Darwin)
+------------------
+A plug-in bundle named 'npca.plugin' is created in 'lib/<arch>' directory. Copy it to your '/Library/Internet Plug-Ins' or '~/Library/Internet Plug-Ins' directory.
+
+
+Linux
+-----
+A shared library named 'libnpca.so' is created in 'lib/<arch>' directory. Copy it to your browser's plugins directory.
+
+
+Win32
+-----
+A dynamic loadable library named 'npca.dll' is created in 'lib/<arch>' directory. Copy it to your browser's plugins directory.
+
+
+USAGE
+-----
+See 'npca/test/test.html', that shows and tests all 'npca' functionality.

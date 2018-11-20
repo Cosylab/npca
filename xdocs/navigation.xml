@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAJ">
+
+  <title>Channel Access in Java</title>
+
+  <body>
+    <links>
+      <item name="Cosylab" href="http://www.cosylab.com"/>
+    </links>
+    
+	<menu name="Quick Links">
+	    <item name="About" href="index.html"/>
+		<item name="Changes" href="changes-report.html"/>
+		<item name="Download" href="downloads.html"/>
+		<item name="Users manual" href="manual.html"/>
+    </menu>
+    
+  </body>
+</project>

@@ -1,0 +1,86 @@
+record(ai, ai001) {
+  field(VAL, "1.23")
+  field(HIHI, "5")
+  field(LOLO, "-5")
+  field(HIGH, "3")
+  field(LOW, "-3")
+  field(EGU, "units")
+  field(PREC, "2")
+  field(HOPR, "100")
+  field(LOPR, "-100")
+}
+
+record(calc, counter) {
+  field(VAL, "1")
+  field(SCAN, ".5 second")
+  field(CALC, "A+1")
+  field(INPA, "counter")
+}
+
+record(mbbi, enum) {
+  field(VAL, 7)
+  field(ZRST, "zeroString")
+  field(ONST, "oneString")
+  field(TWST, "twoString")
+  field(THST, "threeString")
+  field(FRST, "fourString")
+  field(FVST, "fiveString")
+  field(SXST, "sixString")
+  field(SVST, "sevenString")
+  field(EIST, "8s")
+  field(NIST, "9s")
+  field(TEST, "10s")
+  field(ELST, "11s")
+  field(TVST, "12s")
+  field(TTST, "13s")
+  field(FTST, "14s")
+  field(FFST, "15s")
+}
+
+record(compress, doubleArray) {
+  field(DESC, "Circular buffer")
+  field(INP, "counter.VAL CP NMS")
+  field(ALG, "Circular Buffer")
+  field(NSAM, "3")
+  field(EGU, "Counts")
+}
+
+record(subArray, stringArray) {
+  field(INP,"doubleArray.VAL CP NMS")
+  field(FTVL, "STRING")
+  field(MALM, "3")
+  field(NELM, "3")
+  field(INDX, "0")
+}
+
+record(subArray, longArray) {
+  field(INP,"doubleArray.VAL CP NMS")
+  field(FTVL, "LONG")
+  field(MALM, "3")
+  field(NELM, "3")
+  field(INDX, "0")
+}
+
+record(ai, dummy001) {
+}
+
+record(ai, dummy002) {
+}
+
+record(compress, dummyArray) {
+  field(DESC, "Circular buffer")
+  field(INP, "counter.VAL CP NMS")
+  field(ALG, "Circular Buffer")
+  field(NSAM, "3")
+  field(EGU, "Counts")
+}
+
+record(ai, recordACL) {
+  field(VAL, "1")
+  field(PINI, "1")
+}
+
+record(ai, underACL) {
+  field(VAL, "0")
+  field(ASG, "controlW")
+}
